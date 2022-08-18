@@ -1,0 +1,6 @@
+cors-bypass-proxy
+
+https://github.com/r3t4k3r/cors-bypass-proxy
+
+how to use:
+https://this-site-name.domain/example.com
