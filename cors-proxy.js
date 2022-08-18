@@ -69,7 +69,8 @@ function proxyRequest(req, res, proxy) {
         target: location,
         headers: {
             host: location.host,
-            cookie: req.headers['x-cookie'] ?? null
+            cookie: req.headers['x-cookie'] ?? null,
+            'User-Agent': req.headers['ua'] ?? 'anon',
         },
         // HACK: Get hold of the proxyReq object, because we need it later.
         // https://github.com/nodejitsu/node-http-proxy/blob/v1.11.1/lib/http-proxy/passes/web-incoming.js#L144
@@ -115,8 +116,6 @@ function proxyRequest(req, res, proxy) {
         // directly to the proxied URL, but through another proxy.
         req.url = location.href;
     }
-
-    console.log(req);
 
     // Start proxying the request
     proxy.web(req, res, proxyOptions);
